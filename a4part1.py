@@ -89,27 +89,27 @@ re_np_and_or = re_np + '((' + re_comma + '\s+' + re_np + ')*' + re_comma + \
 # Pattern 1: NP_0{,} such as NP_1{, NP_2, ..., {and|or} NP_j}
 re_hypernym_such_as_hyponym = re_hypernym + re_comma_optional + \
     '\s+such/\S+\s+as/\S+\s+' + re_hyponym(re_np_and_or)
-pattern1 = re.compile(re_hypernym_such_as_hyponym)
+pattern1 = re.compile(re_hypernym_such_as_hyponym, flags=re.IGNORECASE)
 
 # Pattern 2: such NP_0 as NP_1{,NP_2,..., {and|or}NP_j}
 re_such_hypernym_as_hyponym = 'such/\S+\s+' + re_hypernym + '\s+as/\S+\s+' + \
     re_hyponym(re_np_and_or)
-pattern2 = re.compile(re_such_hypernym_as_hyponym)
+pattern2 = re.compile(re_such_hypernym_as_hyponym, flags=re.IGNORECASE)
 
 # Pattern 3: NP_0{, NP_1, ...,} {and|or} other NP_j
 re_hyponym_other_hypernym = re_hyponym(re_np_comma) + '\s+' + re_and_or + \
     '(\s+)?other/\S+\s+' + re_hypernym
-pattern3 = re.compile(re_hyponym_other_hypernym)
+pattern3 = re.compile(re_hyponym_other_hypernym, flags=re.IGNORECASE)
 
 # Pattern 4: NP_0{,} including NP_1{, NP_2, ..., {and|or} NP_j}
 re_hypernym_including_hyponym = re_hypernym + re_comma_optional + \
     '\s+including/\S+\s+' + re_hyponym(re_np_and_or)
-pattern4 = re.compile(re_hypernym_including_hyponym)
+pattern4 = re.compile(re_hypernym_including_hyponym, flags=re.IGNORECASE)
 
 # Pattern 5: NP_0{,} especially NP_1{, NP_2, ..., {and|or}}
 re_hypernym_especially_hyponym = re_hypernym + re_comma_optional + \
     '\s+especially/\S+\s+' + re_hyponym(re_np_and_or)
-pattern5 = re.compile(re_hypernym_especially_hyponym)
+pattern5 = re.compile(re_hypernym_especially_hyponym, flags=re.IGNORECASE)
 
 patterns = [pattern1, pattern2, pattern3, pattern4, pattern5]
 
@@ -119,7 +119,7 @@ for s in nyt_mini.tagged_sents()[0:3]:
     tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
     print tagged_sent
     for pattern in patterns:
-        matches = pattern.match(tagged_sent, flags=re.IGNORECASE)
+        matches = pattern.match(tagged_sent)
         print matches
 
 # also just for the purpose of illustration, print the synsets
