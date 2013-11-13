@@ -85,7 +85,7 @@ re_np_and_or = re_np + '((' + re_comma + '\s+' + re_np + ')*' + re_comma + \
 ### Hearst's Patterns
 
 # Pattern 1: NP_0{,} such as NP_1{, NP_2, ..., {and|or} NP_j}
-re_hypernym_such_as_hyponym = re_hypernym + re_comma_optinal + \
+re_hypernym_such_as_hyponym = re_hypernym + re_comma_optional + \
     '\s+such/\S+\s+as/\S+\s+' + re_hyponym(re_np_and_or)
 
 # Pattern 2: such NP_0 as NP_1{,NP_2,..., {and|or}NP_j}
