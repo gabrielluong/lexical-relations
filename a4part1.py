@@ -124,7 +124,7 @@ for s in nyt_mini.tagged_sents():
                 print tagged_sent
                 print matches
     except:
-        print "Discarded Sentence:", s
+        continue
 
 # also just for the purpose of illustration, print the synsets
 # for the word 'assignment'
