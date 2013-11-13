@@ -123,7 +123,7 @@ for s in nyt_mini.tagged_sents():
             if matches:
                 print tagged_sent
                 print matches
-    except NoneType:
+    except:
         print "Discarded Sentence:", s
 
 # also just for the purpose of illustration, print the synsets
