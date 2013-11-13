@@ -116,14 +116,15 @@ patterns = [pattern1, pattern2, pattern3, pattern4, pattern5]
 # just for the purpose of illustration, print the output of the
 # NP Chunker for the first 3 sentences of nyt_mini
 for s in nyt_mini.tagged_sents():
-    print s
-    p = NpChunker.parse(s)
-    tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
-    print tagged_sent
-    for pattern in patterns:
-        matches = pattern.match(tagged_sent)
-        if matches:
-            print matches
+    try:
+        tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
+        for pattern in patterns:
+            matches = pattern.match(tagged_sent)
+            if matches:
+                print tagged_sent
+                print matches
+    except NoneType:
+        print "Discarded Sentence:", s
 
 # also just for the purpose of illustration, print the synsets
 # for the word 'assignment'
