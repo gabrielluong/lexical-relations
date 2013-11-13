@@ -117,8 +117,9 @@ patterns = [pattern1, pattern2, pattern3, pattern4, pattern5]
 # NP Chunker for the first 3 sentences of nyt_mini
 for s in nyt_mini.tagged_sents()[0:3]:
     tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
+    print tagged_sent
     for pattern in patterns:
-        matches = pattern.match(tagged_sent)
+        matches = pattern.match(tagged_sent, flags=re.IGNORECASE)
         print matches
 
 # also just for the purpose of illustration, print the synsets
