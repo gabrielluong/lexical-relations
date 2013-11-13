@@ -63,7 +63,7 @@ def re_hyponym(query):
     return res
 
 # Regular expression to extract NP from the tree
-re_np = '\(NP (?P<np>[^)]*)\)'
+re_np = '\(NP [^)]*\)'
 
 # Regular expression to extract the hypernym NP
 re_hypernym = '(?P<hypernym>' + re_np + ')'
