@@ -72,14 +72,14 @@ re_comma = '(?:,/,)'
 re_comma_optional =  re_comma + '?'
 
 # Regular expression to match and not capture {and|or}
-re_and_or = '(?:and/\S+|or/\S+)'
+re_and_or = '(?:and/\S+|or/\S+)?'
 
 # Regular expression for NP_0{, NP_1, ...,}
 re_np_comma = re_np + '((' + re_comma + '\s+' + re_np + ')*)?'
 
 # Regular expression for NP_0{, NP_1, ..., {and|or} NP_j}
 re_np_and_or = re_np + '((' + re_comma + '\s+' + re_np + ')*' + re_comma + \
-    '\s+' + re_and_or + '\s+' + re_np + ')?'
+    '\s+' + re_and_or + '(\s+)?' + re_np + ')?'
 
 
 ### Hearst's Patterns
@@ -88,13 +88,13 @@ re_np_and_or = re_np + '((' + re_comma + '\s+' + re_np + ')*' + re_comma + \
 re_hypernym_such_as_hyponym = re_hypernym + re_comma_optinal + \
     '\s+such/\S+\s+as/\S+\s+' + re_hyponym(re_np_and_or)
 
-# Pattern 2: such NP_0 as NP_1{,NP_2,...,{and|or}NP_j}
+# Pattern 2: such NP_0 as NP_1{,NP_2,..., {and|or}NP_j}
 re_such_hypernym_as_hyponym = 'such/\S+\s+' + re_hypernym + '\s+as/\S+\s+' + \
     re_hyponym(re_np_and_or)
 
 # Pattern 3: NP_0{, NP_1, ...,} {and|or} other NP_j
 re_hyponym_other_hypernym = re_hyponym(re_np_comma) + '\s+' + re_and_or + \
-    '\s+other/\S+\s+' + re_hypernym
+    '(\s)?+other/\S+\s+' + re_hypernym
 
 # Pattern 4: NP_0{,} including NP_1{, NP_2, ..., {and|or} NP_j}
 re_hypernym_including_hyponym = re_hypernym + re_comma_optional + \
@@ -109,7 +109,7 @@ re_hypernym_especially_hyponym = re_hypernym + re_comma_optional + \
 # just for the purpose of illustration, print the output of the
 # NP Chunker for the first 3 sentences of nyt_mini
 for s in nyt_mini.tagged_sents()[0:3]:
-    p = NpChunker.parse(s)
+    p = NpChunker.parse(s).replace('\n', '')
     print p
 
 print
