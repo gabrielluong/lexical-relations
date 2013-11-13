@@ -98,7 +98,7 @@ pattern2 = re.compile(re_such_hypernym_as_hyponym)
 
 # Pattern 3: NP_0{, NP_1, ...,} {and|or} other NP_j
 re_hyponym_other_hypernym = re_hyponym(re_np_comma) + '\s+' + re_and_or + \
-    '(\s)?+other/\S+\s+' + re_hypernym
+    '(\s+)?other/\S+\s+' + re_hypernym
 pattern3 = re.compile(re_hyponym_other_hypernym)
 
 # Pattern 4: NP_0{,} including NP_1{, NP_2, ..., {and|or} NP_j}
