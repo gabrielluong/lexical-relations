@@ -42,7 +42,9 @@ class Hypernym(object):
 
 
 def get_confidence(num):
-    if num == 1:
+    if num < 0:
+        return "Zero Confidence"
+    elif num == 1:
         return "Low Confidence"
     elif num == 2:
         return "Medium Confidence"
@@ -87,32 +89,37 @@ re_np_and_or = re_np + '((' + re_comma + '\s+' + re_np + ')*' + re_comma + \
 # Pattern 1: NP_0{,} such as NP_1{, NP_2, ..., {and|or} NP_j}
 re_hypernym_such_as_hyponym = re_hypernym + re_comma_optional + \
     '\s+such/\S+\s+as/\S+\s+' + re_hyponym(re_np_and_or)
+pattern1 = re.compile(re_hypernym_such_as_hyponym)
 
 # Pattern 2: such NP_0 as NP_1{,NP_2,..., {and|or}NP_j}
 re_such_hypernym_as_hyponym = 'such/\S+\s+' + re_hypernym + '\s+as/\S+\s+' + \
     re_hyponym(re_np_and_or)
+pattern2 = re.compile(re_such_hypernym_as_hyponym)
 
 # Pattern 3: NP_0{, NP_1, ...,} {and|or} other NP_j
 re_hyponym_other_hypernym = re_hyponym(re_np_comma) + '\s+' + re_and_or + \
     '(\s)?+other/\S+\s+' + re_hypernym
+pattern3 = re.compile(re_hyponym_other_hypernym)
 
 # Pattern 4: NP_0{,} including NP_1{, NP_2, ..., {and|or} NP_j}
 re_hypernym_including_hyponym = re_hypernym + re_comma_optional + \
     '\s+including/\S+\s+' + re_hyponym(re_np_and_or)
+pattern4 = re.compile(re_hypernym_including_hyponym)
 
 # Pattern 5: NP_0{,} especially NP_1{, NP_2, ..., {and|or}}
 re_hypernym_especially_hyponym = re_hypernym + re_comma_optional + \
     '\s+especially/\S+\s+' + re_hyponym(re_np_and_or)
+pattern5 = re.compile(re_hypernym_especially_hyponym)
 
-############################################
+patterns = [pattern1, pattern2, pattern3, pattern4, pattern5]
 
 # just for the purpose of illustration, print the output of the
 # NP Chunker for the first 3 sentences of nyt_mini
 for s in nyt_mini.tagged_sents()[0:3]:
-    p = NpChunker.parse(s).replace('\n', '')
-    print p
-
-print
+    tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
+    for pattern in patterns:
+        matches = pattern.match(tagged_sent)
+        print matches
 
 # also just for the purpose of illustration, print the synsets
 # for the word 'assignment'
