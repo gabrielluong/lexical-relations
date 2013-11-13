@@ -13,7 +13,7 @@ from Asst4 import DefaultNpChunker ## a simple NP chunker to get things started
 
 """
 
-# T(he original version of t)his code was written by Ulrich Germann (11/2010)
+# The original version of this code was written by Ulrich Germann (11/2010)
 # It provides components necessary for Assignment 4 of CSC 485/2501h
 
 ######################################################################
