@@ -70,5 +70,5 @@ for s in nyt_mini.tagged_sents():
 
 # also just for the purpose of illustration, print the synsets
 # for the word 'assignment'
-for x in wn.synsets('assignment','n'):
-    print x
+# for x in wn.synsets('assignment','n'):
+#     print x

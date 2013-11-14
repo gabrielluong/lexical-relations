@@ -12,13 +12,13 @@ def re_hyponym(query):
     return res
 
 # Regular expression to extract NP from the tree
-re_np = '\(NP [^)]*\)'
+re_np = '\(NP[^)]*\)'
 
 # Regular expression to extract the hypernym NP
-re_hypernym = '(?P<hypernym>' + re_np + ')'
+re_hypernym = '(?P<hypernym>' + re_np + ')\s*'
 
 # Regular expression to match and not capture the commas
-re_comma = '(?:,/,)'
+re_comma = '(?:,/,\s+)'
 # Matches optional {,}
 re_comma_optional =  re_comma + '?'
 
@@ -26,11 +26,11 @@ re_comma_optional =  re_comma + '?'
 re_and_or = '(?:and/\S+|or/\S+)?'
 
 # Regular expression for NP_0{, NP_1, ...,}
-re_np_comma = re_np + '((' + re_comma + '\s+' + re_np + ')*)?'
+re_np_comma = re_np + '\s*((' + re_comma + re_np + '\s+)*)?'
 
 # Regular expression for NP_0{, NP_1, ..., {and|or} NP_j}
-re_np_and_or = re_np + '((' + re_comma + '\s+' + re_np + ')*' + re_comma + \
-    '\s+' + re_and_or + '(\s+)?' + re_np + ')?'
+re_np_and_or = re_np + '\s*((' + re_comma + re_np + '\s+)*' + re_comma + \
+    re_and_or + '\s+' + re_np + ')?'
 
 
 ### Hearst's Patterns
