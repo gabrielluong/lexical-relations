@@ -64,3 +64,4 @@ patterns = [pattern1, pattern2, pattern3, pattern4, pattern5]
 
 
 if __name__ == "__main__":
+    pass
