@@ -59,12 +59,11 @@ def get_confidence(num):
 for s in nyt_mini.tagged_sents():
     try:
         tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
-        print tagged_sent
-        # for pattern in patterns:
-        #     matches = pattern.match(tagged_sent)
-        #     if matches:
-        #         print tagged_sent
-        #         print matches
+        for pattern in patterns:
+            matches = pattern.match(tagged_sent)
+            if matches:
+                # print tagged_sent
+                print matches
     except:
         continue
 
