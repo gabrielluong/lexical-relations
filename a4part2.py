@@ -184,12 +184,13 @@ def is_hyponym(word, root):
 
 # Print the data in the list of casual relations
 def print_result(casual_relations, print_sentence=False):
+    print '%24s - %12s - %5s - %24s' % ("NP1", "Verb", "Preposition", "NP2")
     for relation in casual_relations:
-        print '%26s - %12s - %5s - %24s' % (relation['NP1'], relation['verb'], \
+        print '%24s - %12s - %5s - %24s' % (relation['NP1'], relation['verb'], \
             relation['preposition'], relation['NP2'])
 
 
 if __name__ == "__main__":
-    # casual_relations = find_casual_relations(nyt_big.tagged_sents())
-    casual_relations = find_casual_relations(nyt_mini.tagged_sents())
+    casual_relations = find_casual_relations(nyt_big.tagged_sents())
+    # casual_relations = find_casual_relations(nyt_mini.tagged_sents())
     print_result(casual_relations)
