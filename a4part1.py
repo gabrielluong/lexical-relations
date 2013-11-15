@@ -191,12 +191,13 @@ def print_case(case, print_sentence=True):
         print "Case 1 - ", confidence
         print "=" * 50
 
-        data = case[confidence]
-        for d in data:
-            if print_sentence:
-                print d['sentence']
-            print "HYPONYM(%s, %s)\t\tCount: %d" % \
-                (d['hyponym'], d['hypernym'], d['count'])
+        if confidence in case:
+            data = case[confidence]
+            for d in data:
+                if print_sentence:
+                    print d['sentence']
+                print "HYPONYM(%s, %s)\t\tCount: %d" % \
+                    (d['hyponym'], d['hypernym'], d['count'])
 
 
 if __name__ == "__main__":
