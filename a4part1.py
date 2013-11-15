@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # g1luongg
 # 996268275
-import sys
+import sys, re
 sys.path.append('/u/csc2501h/include/a4')
 from Asst4 import nyt_big, nyt_mini, DefaultNpPattern
 # nyt_big  is the full POS-tagged 2004 NY Times corpus.
@@ -22,29 +22,11 @@ NpChunker = RegexpChunkParser([BaselineNpChunkRule],
                               chunk_node='NP',top_node='S')
 
 from P1patterns import patterns
-
-class Hyponym(object):
-
-    def __init__(self, hyponym, hypernym):
-        self.hyponym = hyponym
-        self.hypernym = hypernym
-        self.confidence = 1
-
-
-class Hypernym(object):
-
-    def __init__(self, hypernym):
-        self.hypernym = hypernym
-        self.hyponyms = []
-
-    def add_hyponym(self, hyponym):
-        self.hyponyms.append(hyponym)
+# Import Hearst's patterns
 
 
 def get_confidence(num):
-    if num < 0:
-        return "Zero Confidence"
-    elif num == 1:
+    if num == 1:
         return "Low Confidence"
     elif num == 2:
         return "Medium Confidence"
@@ -52,22 +34,177 @@ def get_confidence(num):
         return "High Confidence"
 
 
+# Return the NP from the tagged NP
+# Example: :(NP Mr./NP Everest/NP)"" => "Mr Everest"
+def get_np(tagged_np):
+    return "_".join(re.findall('(\S+)/\w+', tagged_np)).lower()
 
 
-# just for the purpose of illustration, print the output of the
-# NP Chunker for the first 3 sentences of nyt_mini
-for s in nyt_mini.tagged_sents():
-    try:
-        tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
-        for pattern in patterns:
-            matches = pattern.match(tagged_sent)
-            if matches:
-                # print tagged_sent
-                print matches
-    except:
-        continue
+# Return a list of the tagged NPs in the matched group of hyponyms.
+# Example:
+# (NP grease/NN)  ,/,  and/CC  (NP insect/NN pesticides/NNS)
+#   => ['(NP grease/NN)', '(NP insect/NN pesticides/NNS)']
+def extract_hyponyms(match):
+    return re.findall('\(NP\s+[^)]*\)', match, flags=re.IGNORECASE)
 
-# also just for the purpose of illustration, print the synsets
-# for the word 'assignment'
-# for x in wn.synsets('assignment','n'):
-#     print x
+
+def find_hypernym_relations(sents):
+    # Dictionary that keeps track of the tuple (hyponym, hypernym) pairs and
+    # their occurrence count and tagged sentence
+    pairs = {}
+
+    for s in sents:
+        try:
+            # Get an appropriate string representation of the tree structure
+            # of the tagged sentence
+            tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
+            for pattern in patterns:
+                matches = pattern.search(tagged_sent)
+                hypernym = get_np(matches.group('hypernym'))
+                hyponyms = extract_matches(matches.group('hyponym'))
+
+                for hyponym in hyponyms:
+                    hyponym = get_np(hyponym)
+                    hyponym_pair = (hyponym, hypernym)
+                    pairs.setdefault(hyponym_pair, {
+                        'count': 0,
+                        'sentence': []
+                    })
+                    pairs[hyponym_pair]['count'] += 1
+                    if not tagged in pairs[hyponym_pair]['sentence']:
+                        pairs[hyponym_pair]['sentence'].append(tagged_sent)
+        except:
+            continue
+
+    return pairs
+
+
+# Dictionary for each case that contains the confidence level as a key,
+# and a dictionary containing the hyponym and hypernym pair, and tagged
+# sentence as the value.
+case1 = {}
+case2 = {}
+case3 = {}
+case4 = {}
+
+
+# Evaluate the suggested pair for each of the cases and categorize them according
+# to their confidence level
+def evaluate_cases(hyp_pairs):
+    for (pair, data) in hyp_pairs.items():
+        hyponym = pair[0]
+        hypernym = pair[1]
+        count = data['count']
+        sentence = data['sentence']
+
+        if is_case1(hyponym, hypernym):
+            case1[get_confidence(count)].setdefault([])
+            case1[get_confidence(count)].append({
+                'count': count,
+                'sentence': sentence,
+                'hyponym': hyponym,
+                'hypernym': hypernym
+            })
+        if is_case2(hyponym, hypernym):
+            case2[get_confidence(count)].setdefault([])
+            case2[get_confidence(count)].append({
+                'count': count,
+                'sentence': sentence,
+                'hyponym': hyponym,
+                'hypernym': hypernym
+            })
+        if is_case3(hyponym, hypernym):
+            case3[get_confidence(count)].setdefault([])
+            case3[get_confidence(count)].append({
+                'count': count,
+                'sentence': sentence,
+                'hyponym': hyponym,
+                'hypernym': hypernym
+            })
+        if is_case4(hyponym, hypernym):
+            case4[get_confidence(count)].setdefault([])
+            case4[get_confidence(count)].append({
+                'count': count,
+                'sentence': sentence,
+                'hyponym': hyponym,
+                'hypernym': hypernym
+            })
+
+
+# List that keeps track of pairs of hyponym and hypernym that are related.
+# Used as an optimization for is_sense_related()
+related = []
+
+# Return True if one or more senses of each word is related between the two
+# given words, and false otherwise.
+def is_sense_related(hyponym, hypernym):
+    if (hyponym, hypernym) in related:
+        return True
+
+    hyponym_synsets = wn.synsets(hyponym)
+    hypernym_synsets = wn.synsets(hypernym)
+    result = False
+
+    # Check that both words are present in WordNet
+    if hyponym_synsets and hypernym_synsets:
+        for hypernym_synset in hypernym_synsets:
+            for hyponym_synset in hyponym_synsets:
+                # Find all synsets that hypernyms of the hyponym synset and
+                # the hypernym synset, and check if there is any relations.
+                result = len(hyponym_synset.common_hypernyms(hypernym_synset)) > 0
+                if result:
+                    # Add the pair as a tuple to the list related
+                    related.append((hyponym, hypernym))
+                    break
+
+    return result
+
+
+# Return whether or not both words are present in WordNet, and a relation holds
+# between the one or more senses of each.
+def is_case1(hyponym, hypernym):
+    return is_sense_related(hyponym, hypernym)
+
+
+# Return whether or not the relation is contracted by WordNet for at least one
+# sense of each word
+def is_case2(hyponym, hypernym):
+    return is_case1 and is_sense_related(hypernym, hyponym)
+
+
+# Return whether or not both words are already in WordNet, and the relation is
+# not present
+def is_case3(hyponym, hypernym):
+    return wn.synsets(hyponym) and wn.synsets(hypernym) and \
+        not is_case1(hyponym, hypernym)
+
+
+# Return whether or not one or both of the words is missing from WordNet.
+def is_case4(hyponym, hypernym):
+    return not n.synsets(hyponym) or not wn.synsets(hypernym)
+
+
+# Print the data in the case dictionaries.
+def print_case(case, print_sentence=True):
+    for i in range(1, 4):
+        confidence = get_confidence(i)
+        print "Case 1 - ", confidence
+        print "=" * 50
+
+        data = case[confidence]
+        for d in data:
+            if print_sentence:
+                print d['sentence']
+            print "HYPONYM(%s, %s)\t\tCount: %d" % \
+                (d['hyponym'], d['hypernym'], d['count'])
+
+
+if __name__ == "__main__":
+    # hyp_pair_dict = find_hypernym_relations(nyt_big.tagged_sents())
+    hyp_pair_dict = find_hypernym_relations(nyt_mini.tagged_sents())
+    evaluate_cases(hyp_pair_dict)
+
+    print_case(case1)
+    print_case(case2)
+    print_case(case3)
+    print_case(case4)
