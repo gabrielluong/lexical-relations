@@ -182,7 +182,7 @@ def is_case4(hyponym, hypernym):
 
 
 # Print the data in the case dictionaries.
-def print_case(case, print_sentence=True):
+def print_case(case, print_sentence=False):
     for i in range(1, 4):
         confidence = get_confidence(i)
 
