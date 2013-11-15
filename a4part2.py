@@ -62,8 +62,7 @@ def find_casual_relations(sents):
                 np1 = get_word(matches.group('NP1'))
                 np2 = get_word(matches.group('NP2'))
                 verb = get_word(matches.group('verb'))
-                preposition_match = matches.group('preposition')
-                preposition = get_word(preposition_match) if preposition_match else ""
+                preposition = get_word(matches.group('preposition'))
 
                 if preposition:
                     print preposition
