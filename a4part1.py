@@ -21,7 +21,7 @@ BaselineNpChunkRule = ChunkRule(DefaultNpPattern,
 NpChunker = RegexpChunkParser([BaselineNpChunkRule],
                               chunk_node='NP',top_node='S')
 
-from P1patterns import patterns
+from HeartPattern import patterns
 # Import Hearst's patterns
 
 
