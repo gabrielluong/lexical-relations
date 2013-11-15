@@ -193,8 +193,7 @@ def print_case(case, print_sentence=False):
             for d in data:
                 if print_sentence:
                     print d['sentence']
-                print "HYPONYM(%s, %s)\t\tCount: %d" % \
-                    (d['hyponym'], d['hypernym'], d['count'])
+                print "HYPONYM(%s, %s)" % (d['hyponym'], d['hypernym'])
         else:
             print "Case", i, "-", confidence, "(0)"
         print "\n" * 2
