@@ -64,9 +64,6 @@ def find_casual_relations(sents):
                 verb = get_word(matches.group('verb'))
                 preposition = get_word(matches.group('preposition'))
 
-                if preposition:
-                    print preposition
-
                 if verb in causal_verbs and \
                     is_causal(np1, np2, verb, preposition):
                     result.append({
@@ -166,7 +163,7 @@ def is_hyponym(word, root):
 
 
 # Print the data in the list of casual relations
-def print_result(casual_relations, print_sentence=True):
+def print_result(casual_relations, print_sentence=False):
     for relation in casual_relations:
         print '%s-%s-%s-%s' % (relation['NP1'], relation['verb'], \
             relation['preposition'], relation['NP2'])
