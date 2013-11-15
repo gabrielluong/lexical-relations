@@ -182,7 +182,7 @@ def is_case4(hyponym, hypernym):
 
 
 # Print the data in the case dictionaries.
-def print_case(case_num, case, print_sentence=True):
+def print_case(case_num, case, print_sentence=False):
     for i in range(1, 4):
         confidence = get_confidence(i)
 
@@ -200,8 +200,8 @@ def print_case(case_num, case, print_sentence=True):
 
 
 if __name__ == "__main__":
-    # hyp_pair_dict = find_hypernym_relations(nyt_big.tagged_sents())
-    hyp_pair_dict = find_hypernym_relations(nyt_mini.tagged_sents())
+    hyp_pair_dict = find_hypernym_relations(nyt_big.tagged_sents())
+    # hyp_pair_dict = find_hypernym_relations(nyt_mini.tagged_sents())
     evaluate_cases(hyp_pair_dict)
 
     print_case(1, case1)

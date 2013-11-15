@@ -125,7 +125,7 @@ HYPONYM(cribs, items)
 
 
 
-Case 2 - Medium Confidence ( 8 )
+Case 1 - Medium Confidence ( 8 )
 ==================================================
 HYPONYM(davis, contemporaries)
 HYPONYM(gorky, contemporaries)
@@ -138,14 +138,14 @@ HYPONYM(teachers, staff_members)
 
 
 
-Case 3 - High Confidence ( 2 )
+Case 1 - High Confidence ( 2 )
 ==================================================
 HYPONYM(president_bush, republicans)
 HYPONYM(bonds, securities)
 
 
 
-Case 1 - Low Confidence ( 175 )
+Case 2 - Low Confidence ( 175 )
 ==================================================
 HYPONYM(personals, services)
 HYPONYM(lincoln, hospitals)
@@ -337,13 +337,13 @@ HYPONYM(de_kooning, contemporaries)
 
 
 
-Case 3 - High Confidence ( 1 )
+Case 2 - High Confidence ( 1 )
 ==================================================
 HYPONYM(president_bush, republicans)
 
 
 
-Case 1 - Low Confidence ( 58 )
+Case 3 - Low Confidence ( 58 )
 ==================================================
 HYPONYM(el_nino, systems)
 HYPONYM(sabotage, problems)
@@ -406,7 +406,7 @@ HYPONYM(failure, international_law)
 
 
 
-Case 2 - Medium Confidence ( 3 )
+Case 3 - Medium Confidence ( 3 )
 ==================================================
 HYPONYM(meeting_place, information)
 HYPONYM(eleven, crew_members)
@@ -419,7 +419,7 @@ Case 3 - High Confidence ( 0 )
 
 
 
-Case 1 - Low Confidence ( 1291 )
+Case 4 - Low Confidence ( 1291 )
 ==================================================
 HYPONYM(stroke, cardiovascular_event)
 HYPONYM(favorable_exchange_rates, reasons)
@@ -1715,7 +1715,7 @@ HYPONYM(''no, state)
 
 
 
-Case 2 - Medium Confidence ( 43 )
+Case 4 - Medium Confidence ( 43 )
 ==================================================
 HYPONYM(mr._tanzi, eight_people)
 HYPONYM(pension_funds, big_institutions)
@@ -1763,7 +1763,7 @@ HYPONYM(drawings, other_media)
 
 
 
-Case 3 - High Confidence ( 2 )
+Case 4 - High Confidence ( 2 )
 ==================================================
 HYPONYM(sam, other_names)
 HYPONYM(re_''the, doctor)
