@@ -35,7 +35,7 @@ def get_causal_verbs():
         # If so, remove it from the newly joined word.
         if re.match('\(\w+\)', words[-1], flags=re.IGNORECASE):
             words.pop(-1)
-        lines[i] = "_".join(words)
+        lines[i] = " ".join(words)
 
     return lines
 
@@ -46,10 +46,21 @@ def get_word(tagged_component):
     return "_".join(re.findall('(\S+)/\w+', tagged_component)).lower()
 
 
+# List of given causal verbs
 casual_verbs = get_causal_verbs()
-def is_causal_verb(tagged_component):
-    verbs = re.findall('(\S+)/\w+', tagged_component)
-    return True
+def is_causal_verb(tagged_verb):
+    # Get the verb from the tagged verb and lose the letter to account for
+    # tenses
+    if len(re.findall('(\S+)/\w+', tagged_verb)) > 1:
+        print "WARNING"
+        sys.exit()
+    verb = re.findall('(\S+)/\w+', tagged_verb)[0][:-1]
+
+    for v in casual_verbs:
+        if re.match(verb, v, re.IGNORECASE):
+            return True
+
+    return False
 
 
 def find_casual_relations(sents):
@@ -176,5 +187,4 @@ def print_result(casual_relations, print_sentence=False):
 if __name__ == "__main__":
     # casual_relations = find_casual_relations(nyt_big.tagged_sents())
     casual_relations = find_casual_relations(nyt_mini.tagged_sents())
-    print casual_relations
     print_result(casual_relations)
