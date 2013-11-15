@@ -247,7 +247,7 @@ HYPONYM(cribs, items)
 
 
 
-Case 2 - Medium Confidence ( 8 )
+Case 1 - Medium Confidence ( 8 )
 ==================================================
 ['(S  As/IN  (NP a/DT bonus/NN)  ,/,  there/EX  are/VBP  (NP works/NNS)  by/IN  (NP contemporaries/NNS)  ,/,  including/VBG  (NP Davis/NP)  ,/,  (NP Gorky/NP)  and/CC  (NP de/NP Kooning/NP)  (/(  (NP Cotter/NP)  )/)  ./SENT)']
 HYPONYM(davis, contemporaries)
@@ -268,7 +268,7 @@ HYPONYM(teachers, staff_members)
 
 
 
-Case 3 - High Confidence ( 2 )
+Case 1 - High Confidence ( 2 )
 ==================================================
 ['(S  (NP President/NP Bush/NP)  and/CC  (NP other/JJ Republicans/NPS)  plan/VBP  to/TO  trumpet/VB  (NP the/DT law/NN)  as/IN  (NP a/DT boon/NN)  to/TO  the/DT  elderly/JJ  and/CC  will/MD  oppose/VB  (NP changes/NNS)  ,/,  saying/VBG  (NP the/DT law/NN)  should/MD  be/VB  given/VBN  (NP a/DT chance/NN)  to/TO  work/VB  ./SENT)', '(S  Still/RB  sensitive/JJ  to/TO  (NP questions/NNS)  about/IN  (NP the/DT integrity/NN)  of/IN  (NP the/DT award/NN process/NN)  ,/,  (NP Bechtel/NP)  ,/,  (NP a/DT San/NP)  (NP Francisco-based/JJ company/NN)  ,/,  has/VBZ  been/VBN  (NP a/DT generous/JJ campaign/NN contributor/NN)  to/TO  (NP President/NP Bush/NP)  and/CC  (NP other/JJ Republicans/NNS)  ,/,  but/CC  (NP senior/JJ agency/NN officials/NNS)  insisted/VBD  (NP Tuesday/NP)  that/IN  (NP both/DT awards/NNS)  were/VBD  made/VBN  in/IN  (NP full/JJ compliance/NN)  with/IN  (NP federal/JJ laws/NNS)  and/CC  that/IN  (NP Bechtel/NP)  had/VBD  not/RB  gained/VBN  (NP any/DT special/JJ advantage/NN)  as/IN  (NP a/DT result/NN)  of/IN  winning/VBG  (NP the/DT first/JJ contract/NN)  ./SENT)', '(S  (NP THE/DT STRUGGLE/NP)  FOR/IN  (NP IRAQ/NP)  :/:  (NP RECONSTRUCTION/NN Correction/NN)  :/:  (NP January/NP)  (NP 9/CD ,/, 2004/CD ,/, Friday/NP)  Because/IN  of/IN  an/DT  editing/VBG  (NP error/NN)  ,/,  (NP an/DT article/NN)  on/IN  (NP Wednesday/NP)  about/IN  (NP a/DT large/JJ Iraq/NP reconstruction/NN contract/NN)  awarded/VBD  to/TO  (NP a/DT subsidiary/NN)  of/IN  (NP the/DT Bechtel/NP Group/NP)  ,/,  (NP a/DT generous/JJ contributor/NN)  to/TO  (NP President/NP Bush/NP)  and/CC  (NP other/JJ Republicans/NNS)  ,/,  referred/VBD  incorrectly/RB  to/TO  (NP criticism/NN)  of/IN  (NP the/DT award/NN process/NN)  ./SENT)', '(S  Because/IN  of/IN  an/DT  editing/VBG  (NP error/NN)  ,/,  (NP an/DT article/NN)  on/IN  (NP Wednesday/NP)  about/IN  (NP a/DT large/JJ Iraq/NP reconstruction/NN contract/NN)  awarded/VBD  to/TO  (NP a/DT subsidiary/NN)  of/IN  (NP the/DT Bechtel/NP Group/NP)  ,/,  (NP a/DT generous/JJ contributor/NN)  to/TO  (NP President/NP Bush/NP)  and/CC  (NP other/JJ Republicans/NNS)  ,/,  referred/VBD  incorrectly/RB  to/TO  (NP criticism/NN)  of/IN  (NP the/DT award/NN process/NN)  ./SENT)']
 HYPONYM(president_bush, republicans)
@@ -277,7 +277,7 @@ HYPONYM(bonds, securities)
 
 
 
-Case 1 - Low Confidence ( 175 )
+Case 2 - Low Confidence ( 175 )
 ==================================================
 ["(S  (NP Yahoo/NN)  's/POS  paid/VBN  (NP services/NNS)  ,/,  including/VBG  (NP e-mail/NP storage/NN)  ,/,  (NP auctions/NNS)  and/CC  (NP personals/NNS)  ,/,  are/VBP  also/RB  gaining/VBG  (NP strength/NN)  with/IN  (NP international/JJ audiences/NNS)  as/IN  (NP consumer/NN resistance/NN)  to/TO  paid/VBN  (NP content/NN)  begins/VBZ  to/TO  ease/VB  ./SENT)"]
 HYPONYM(personals, services)
@@ -651,14 +651,14 @@ HYPONYM(de_kooning, contemporaries)
 
 
 
-Case 3 - High Confidence ( 1 )
+Case 2 - High Confidence ( 1 )
 ==================================================
 ['(S  (NP President/NP Bush/NP)  and/CC  (NP other/JJ Republicans/NPS)  plan/VBP  to/TO  trumpet/VB  (NP the/DT law/NN)  as/IN  (NP a/DT boon/NN)  to/TO  the/DT  elderly/JJ  and/CC  will/MD  oppose/VB  (NP changes/NNS)  ,/,  saying/VBG  (NP the/DT law/NN)  should/MD  be/VB  given/VBN  (NP a/DT chance/NN)  to/TO  work/VB  ./SENT)', '(S  Still/RB  sensitive/JJ  to/TO  (NP questions/NNS)  about/IN  (NP the/DT integrity/NN)  of/IN  (NP the/DT award/NN process/NN)  ,/,  (NP Bechtel/NP)  ,/,  (NP a/DT San/NP)  (NP Francisco-based/JJ company/NN)  ,/,  has/VBZ  been/VBN  (NP a/DT generous/JJ campaign/NN contributor/NN)  to/TO  (NP President/NP Bush/NP)  and/CC  (NP other/JJ Republicans/NNS)  ,/,  but/CC  (NP senior/JJ agency/NN officials/NNS)  insisted/VBD  (NP Tuesday/NP)  that/IN  (NP both/DT awards/NNS)  were/VBD  made/VBN  in/IN  (NP full/JJ compliance/NN)  with/IN  (NP federal/JJ laws/NNS)  and/CC  that/IN  (NP Bechtel/NP)  had/VBD  not/RB  gained/VBN  (NP any/DT special/JJ advantage/NN)  as/IN  (NP a/DT result/NN)  of/IN  winning/VBG  (NP the/DT first/JJ contract/NN)  ./SENT)', '(S  (NP THE/DT STRUGGLE/NP)  FOR/IN  (NP IRAQ/NP)  :/:  (NP RECONSTRUCTION/NN Correction/NN)  :/:  (NP January/NP)  (NP 9/CD ,/, 2004/CD ,/, Friday/NP)  Because/IN  of/IN  an/DT  editing/VBG  (NP error/NN)  ,/,  (NP an/DT article/NN)  on/IN  (NP Wednesday/NP)  about/IN  (NP a/DT large/JJ Iraq/NP reconstruction/NN contract/NN)  awarded/VBD  to/TO  (NP a/DT subsidiary/NN)  of/IN  (NP the/DT Bechtel/NP Group/NP)  ,/,  (NP a/DT generous/JJ contributor/NN)  to/TO  (NP President/NP Bush/NP)  and/CC  (NP other/JJ Republicans/NNS)  ,/,  referred/VBD  incorrectly/RB  to/TO  (NP criticism/NN)  of/IN  (NP the/DT award/NN process/NN)  ./SENT)', '(S  Because/IN  of/IN  an/DT  editing/VBG  (NP error/NN)  ,/,  (NP an/DT article/NN)  on/IN  (NP Wednesday/NP)  about/IN  (NP a/DT large/JJ Iraq/NP reconstruction/NN contract/NN)  awarded/VBD  to/TO  (NP a/DT subsidiary/NN)  of/IN  (NP the/DT Bechtel/NP Group/NP)  ,/,  (NP a/DT generous/JJ contributor/NN)  to/TO  (NP President/NP Bush/NP)  and/CC  (NP other/JJ Republicans/NNS)  ,/,  referred/VBD  incorrectly/RB  to/TO  (NP criticism/NN)  of/IN  (NP the/DT award/NN process/NN)  ./SENT)']
 HYPONYM(president_bush, republicans)
 
 
 
-Case 1 - Low Confidence ( 58 )
+Case 3 - Low Confidence ( 58 )
 ==================================================
 ["(S  (NP ''There/NN)  's/VBZ  (NP a/DT whole/JJ group/NN)  of/IN  (NP phenomena/NNS)  that/IN  we/PP  're/VBP  studying/VBG  ,/,  (NP El/NP Nino/NP)  and/CC  (NP other/JJ systems/NNS)  that/WDT  change/VBP  our/PP$  (NP climate/NN)  in/IN  (NP subtle/JJ ways/NNS)  ,/,  to/TO  the/DT  steady/JJ  and/CC  (NP substantial/JJ increase/NN)  of/IN  (NP CO2/NP)  in/IN  (NP the/DT atmosphere/NN)  ./SENT)"]
 HYPONYM(el_nino, systems)
@@ -779,7 +779,7 @@ HYPONYM(failure, international_law)
 
 
 
-Case 2 - Medium Confidence ( 3 )
+Case 3 - Medium Confidence ( 3 )
 ==================================================
 ['(S  (NP Meeting/NN place/NN)  and/CC  (NP other/JJ information/NN)  :/:  (/(  212/CD  )/)  726-1529/CD  ./SENT)']
 HYPONYM(meeting_place, information)
@@ -795,7 +795,7 @@ Case 3 - High Confidence ( 0 )
 
 
 
-Case 1 - Low Confidence ( 1291 )
+Case 4 - Low Confidence ( 1291 )
 ==================================================
 ["(S  In/IN  (NP March/NP)  (NP 2002/CD ,/, experts/NNS)  from/IN  (NP the/DT Centers/NPS)  for/IN  (NP Disease/NP Control/NP)  and/CC  (NP Prevention/NP)  and/CC  (NP the/DT American/NP Heart/NP Association/NP)  concluded/VBD  that/IN  (NP patients/NNS)  deemed/VBN  to/TO  be/VB  at/IN  (NP ''intermediate/NN risk/NN)  '/POS  '/''  of/IN  (NP a/DT heart/NN attack/NN)  ,/,  (NP stroke/NN)  or/CC  (NP other/JJ cardiovascular/JJ event/NN)  should/MD  be/VB  tested/VBN  for/IN  (NP C-reactive/JJ protein/NN)  ./SENT)"]
 HYPONYM(stroke, cardiovascular_event)
@@ -3382,7 +3382,7 @@ HYPONYM(''no, state)
 
 
 
-Case 2 - Medium Confidence ( 43 )
+Case 4 - Medium Confidence ( 43 )
 ==================================================
 ['(S  So/RB  far/RB  ,/,  (NP Italian/JJ prosecutors/NNS)  have/VBP  arrested/VBN  (NP eight/CD people/NNS)  ,/,  including/VBG  (NP Mr./NP Tanzi/NP)  and/CC  (NP Mr./NP Tonna/NP)  ,/,  in/IN  (NP connection/NN)  with/IN  (NP the/DT Parmalat/NP affair/NN)  ./SENT)']
 HYPONYM(mr._tanzi, eight_people)
@@ -3473,7 +3473,7 @@ HYPONYM(drawings, other_media)
 
 
 
-Case 3 - High Confidence ( 2 )
+Case 4 - High Confidence ( 2 )
 ==================================================
 ["(S  (NP Some/DT stores/NNS)  operate/VBP  under/IN  (NP other/JJ names/NNS)  ,/,  including/VBG  (NP Sam/NP)  's/POS  (NP Club/NP)  ;/:  not/RB  all/DT  are/VBP  called/VBN  (NP Wal-Mart/NP)  ./SENT)"]
 HYPONYM(sam, other_names)
