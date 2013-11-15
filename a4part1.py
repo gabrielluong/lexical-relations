@@ -60,6 +60,8 @@ def find_hypernym_relations(sents):
             tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
             for pattern in patterns:
                 matches = pattern.search(tagged_sent)
+                if matches:
+                    print matches
                 hypernym = get_np(matches.group('hypernym'))
                 hyponyms = extract_matches(matches.group('hyponym'))
 
@@ -198,6 +200,7 @@ def print_case(case, print_sentence=True):
                     print d['sentence']
                 print "HYPONYM(%s, %s)\t\tCount: %d" % \
                     (d['hyponym'], d['hypernym'], d['count'])
+        print "\n" * 2
 
 
 if __name__ == "__main__":
