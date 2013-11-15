@@ -60,6 +60,7 @@ def find_hypernym_relations(sents):
             tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
             for pattern in patterns:
                 matches = pattern.match(tagged_sent)
+                print matches
                 if matches:
                     hypernym = get_np(matches.group('hypernym'))
                     hyponyms = extract_matches(matches.group('hyponym'))
