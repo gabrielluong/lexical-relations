@@ -53,9 +53,6 @@ def find_hypernym_relations(sents):
     # their occurrence count and tagged sentence
     pairs = {}
 
-    for pattern in patterns:
-        print pattern
-
     for s in sents:
         try:
             # Get an appropriate string representation of the tree structure
@@ -64,10 +61,8 @@ def find_hypernym_relations(sents):
             for pattern in patterns:
                 matches = pattern.search(tagged_sent)
                 if matches:
-                    print matches
                     hypernym = get_np(matches.group('hypernym'))
-                    hyponyms = extract_matches(matches.group('hyponym'))
-                    print hypernym, hyponyms
+                    hyponyms = extract_hyponyms(matches.group('hyponym'))
 
                     for hyponym in hyponyms:
                         hyponym = get_np(hyponym)
