@@ -88,13 +88,13 @@ def is_causal(np1, np2, verb, preposition):
             result = True
         elif is_hyponym(np2, 'phenomenon.n.01'):
             result = True
-        elif re.match('^associate[d]?$', verb, flags=re.IGNORECASE) and \
+        elif re.match('^associate[ds]?$', verb, flags=re.IGNORECASE) and \
             preposition == 'with' and not is_hyponym(np1, 'entity.n.01') and \
             not is_hyponym(np2, 'abstraction.n.06') and \
             not is_hyponym(np2, 'group.n.01') and \
             not is_hyponym(np2, 'possession.n.02'):
             result = True
-        elif re.match('^relate[d]?$', verb, flags=re.IGNORECASE) and \
+        elif re.match('^relate[ds]?$', verb, flags=re.IGNORECASE) and \
             preposition == 'to' and \
             not is_hyponym(np1, 'entity.n.01') and \
             not is_hyponym(np2, 'abstraction.n.06') and \
@@ -106,7 +106,7 @@ def is_causal(np1, np2, verb, preposition):
         elif not is_hyponym(np1, 'abstraction.n.06') and \
             (is_hyponym(np2, 'event.n.01') or is_hyponym(np2, 'act.n.02')):
             result = True
-        elif re.match('^lead$', verb, flags=re.IGNORECASE) and \
+        elif re.match('^lead[ds]?$', verb, flags=re.IGNORECASE) and \
             preposition == 'to' and \
             not is_hyponym(np2, 'entity.n.01') and \
             not is_hyponym(np2, 'group.n.01'):
@@ -156,7 +156,7 @@ def is_hyponym(word, root):
             result = len(word_synset.common_hypernyms(root)) > 0
             if result:
                 # Add the pair as a tuple to the list related
-                related.objectppend((word, root))
+                related.append((word, root))
                 break
 
     return result
