@@ -63,7 +63,11 @@ def find_casual_relations(sents):
                 np1 = get_word(matches.group('NP1'))
                 np2 = get_word(matches.group('NP2'))
                 verb = get_word(matches.group('verb'))
-                preposition = get_word(matches.group('preposition'))
+                preposition_match = matches.group('preposition')
+                preposition = get_word(preposition_match) if preposition_match else ""
+
+                if preposition:
+                    print preposition
 
                 if verb in causal_verbs and \
                     is_causal(np1, np2, verb, preposition):
