@@ -35,14 +35,14 @@ def get_confidence(num):
 
 
 # Return the NP from the tagged NP
-# Example: :(NP Mr./NP Everest/NP)"" => "Mr Everest"
+# Example: "(NP Mr./NP Everest/NP)" => "Mr Everest"
 def get_np(tagged_np):
     return "_".join(re.findall('(\S+)/\w+', tagged_np)).lower()
 
 
 # Return a list of the tagged NPs in the matched group of hyponyms.
 # Example:
-# (NP grease/NN)  ,/,  and/CC  (NP insect/NN pesticides/NNS)
+# "(NP grease/NN)  ,/,  and/CC  (NP insect/NN pesticides/NNS)"
 #   => ['(NP grease/NN)', '(NP insect/NN pesticides/NNS)']
 def extract_hyponyms(match):
     return re.findall('\(NP\s+[^)]*\)', match, flags=re.IGNORECASE)
