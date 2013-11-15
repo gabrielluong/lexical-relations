@@ -43,6 +43,7 @@ def get_causal_verbs():
 # Return the word from the tagged component
 # Example: (NP Mr/NP Everest/NP)"" => "Mr_Everest"
 def get_word(tagged_component):
+    print tagged_component
     return "_".join(re.findall('(\S+)/\w+', tagged_component)).lower()
 
 
