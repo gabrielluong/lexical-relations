@@ -53,16 +53,18 @@ def find_hypernym_relations(sents):
     # their occurrence count and tagged sentence
     pairs = {}
 
+    for pattern in patterns:
+        print pattern
+
     for s in sents:
         try:
             # Get an appropriate string representation of the tree structure
             # of the tagged sentence
             tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
-            print tagged_sent
             for pattern in patterns:
                 matches = pattern.search(tagged_sent)
-                print matches
                 if matches:
+                    print matches
                     hypernym = get_np(matches.group('hypernym'))
                     hyponyms = extract_matches(matches.group('hyponym'))
                     print hypernym, hyponyms
