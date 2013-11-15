@@ -38,7 +38,7 @@ def get_causal_verbs():
             # If so, remove it from the newly joined word.
             optional_match = re.match('\(\w+\)', word, flags=re.IGNORECASE)
             if optional_match:
-                new_re = "(" + optional_match.group() + ")?\s*"
+                new_re += "(" + optional_match.group() + ")?\s*"
             else:
                 new_re += word + "[ds]?\s*"
         lines[i] = new_re
@@ -60,7 +60,6 @@ def is_causal_verb(tagged_verb):
 
     for re_verb in re_casual_verbs:
         if re.match(re_verb, verb, re.IGNORECASE):
-            print re_verb, verb
             return True
 
     return False

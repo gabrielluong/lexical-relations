@@ -36,7 +36,7 @@ if __name__ == "__main__":
             # If so, remove it from the newly joined word.
             optional_match = re.match('\(\w+\)', word, flags=re.IGNORECASE)
             if optional_match:
-                new_re = "(" + optional_match.group() + ")?\s*"
+                new_re += "(" + optional_match.group() + ")?\s*"
             else:
                 new_re += word + "[ds]?\s*"
         lines[i] = new_re
