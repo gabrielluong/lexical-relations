@@ -53,13 +53,14 @@ def get_word(tagged_component):
 
 
 # List of regular expression of the given causal verbs
-casual_verbs = get_causal_verbs()
+re_casual_verbs = get_causal_verbs()
 def is_causal_verb(tagged_verb):
     # Get the verb from the tagged verb
     verb = re.findall('(\S+)/\w+', tagged_verb)[0]
 
-    for re_verb in casual_verbs:
+    for re_verb in re_casual_verbs:
         if re.match(re_verb, verb, re.IGNORECASE):
+            print re_verb, verb
             return True
 
     return False

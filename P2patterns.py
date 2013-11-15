@@ -25,3 +25,20 @@ pattern = re.compile(re_girju)
 
 if __name__ == "__main__":
     print re_girju
+    lines = [line.strip() for line in open('Causal-verbs.txt')]
+
+    for i in range(len(lines)):
+        new_re = ""
+        words = lines[i].split(" ")
+
+        for word in words:
+            # Check if the last word for the line matches an optional preposition.
+            # If so, remove it from the newly joined word.
+            optional_match = re.match('\(\w+\)', word, flags=re.IGNORECASE)
+            if optional_match:
+                new_re = "(" + optional_match.group() + ")?\s*"
+            else:
+                new_re += word + "[ds]?\s*"
+        lines[i] = new_re
+
+    print lines
