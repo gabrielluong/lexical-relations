@@ -72,7 +72,7 @@ def find_hypernym_relations(sents):
                             'sentence': []
                         })
                         pairs[hyponym_pair]['count'] += 1
-                        if not tagged in pairs[hyponym_pair]['sentence']:
+                        if not tagged_sent in pairs[hyponym_pair]['sentence']:
                             pairs[hyponym_pair]['sentence'].append(tagged_sent)
         except:
             continue
