@@ -66,6 +66,7 @@ def find_casual_relations(sents):
 
                 if verb in causal_verbs and \
                     is_causal(np1, np2, verb, preposition):
+                    print "Appended"
                     result.append({
                         'NP1': np1,
                         'NP2': np2,
@@ -172,4 +173,5 @@ def print_result(casual_relations, print_sentence=False):
 if __name__ == "__main__":
     # casual_relations = find_casual_relations(nyt_big.tagged_sents())
     casual_relations = find_casual_relations(nyt_mini.tagged_sents())
+    print casual_relations
     print_result(casual_relations)
