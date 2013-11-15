@@ -182,20 +182,20 @@ def is_case4(hyponym, hypernym):
 
 
 # Print the data in the case dictionaries.
-def print_case(case, print_sentence=True):
+def print_case(case_num, case, print_sentence=True):
     for i in range(1, 4):
         confidence = get_confidence(i)
 
         if confidence in case:
             data = case[confidence]
-            print "Case", i, "-", confidence, "(", len(data), ")"
+            print "Case", case_num, "-", confidence, "(", len(data), ")"
             print "=" * 50
             for d in data:
                 if print_sentence:
                     print d['sentence']
                 print "HYPONYM(%s, %s)" % (d['hyponym'], d['hypernym'])
         else:
-            print "Case", i, "-", confidence, "(0)"
+            print "Case", case_num, "-", confidence, "(0)"
         print "\n" * 2
 
 
@@ -204,7 +204,7 @@ if __name__ == "__main__":
     hyp_pair_dict = find_hypernym_relations(nyt_mini.tagged_sents())
     evaluate_cases(hyp_pair_dict)
 
-    print_case(case1)
-    print_case(case2)
-    print_case(case3)
-    print_case(case4)
+    print_case(1, case1)
+    print_case(2, case2)
+    print_case(3, case3)
+    print_case(4, case4)
