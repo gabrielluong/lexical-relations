@@ -88,27 +88,27 @@ def is_causal(np1, np2, verb, preposition):
         elif is_hyponym(np2, 'phenomenon.n.01'):
             result = True
         elif re.match('^associate[d]?$', verb, flags=re.IGNORECASE) and \
-            preposition == 'with' and !is_hyponym(np1, 'entity.n.01') and \
-            !is_hyponym(np2, 'abstraction.n.06') and \
-            !is_hyponym(np2, 'group.n.01') and \
-            !is_hyponym(np2, 'possession.n.02'):
+            preposition == 'with' and not is_hyponym(np1, 'entity.n.01') and \
+            not is_hyponym(np2, 'abstraction.n.06') and \
+            not is_hyponym(np2, 'group.n.01') and \
+            not is_hyponym(np2, 'possession.n.02'):
             result = True
         elif re.match('^relate[d]?$', verb, flags=re.IGNORECASE) and \
             preposition == 'to' and \
-            !is_hyponym(np1, 'entity.n.01') and \
-            !is_hyponym(np2, 'abstraction.n.06') and \
-            !is_hyponym(np2, 'group.n.01') and \
-            !is_hyponym(np2, 'possession.n.02'):
+            not is_hyponym(np1, 'entity.n.01') and \
+            not is_hyponym(np2, 'abstraction.n.06') and \
+            not is_hyponym(np2, 'group.n.01') and \
+            not is_hyponym(np2, 'possession.n.02'):
             result = True
-        elif !is_hyponym(np1, 'entity.n.01') and is_hyponym(np2, 'event.n.01'):
+        elif not is_hyponym(np1, 'entity.n.01') and is_hyponym(np2, 'event.n.01'):
             result = True
-        elif !is_hyponym(np1, 'abstraction.n.06') and \
+        elif not is_hyponym(np1, 'abstraction.n.06') and \
             (is_hyponym(np2, 'event.n.01') or is_hyponym(np2, 'act.n.02')):
             result = True
         elif re.match('^lead$', verb, flags=re.IGNORECASE) and \
             preposition == 'to' and \
-            !is_hyponym(np2, 'entity.n.01') and \
-            !is_hyponym(np2, 'group.n.01'):
+            not is_hyponym(np2, 'entity.n.01') and \
+            not is_hyponym(np2, 'group.n.01'):
             result = True
 
     return result
@@ -122,11 +122,11 @@ def is_non_causal_relations(np1, np2, verb, preposition):
     if re.match('^induce[ds]?$', verb, flags=re.IGNORECASE) and \
         (is_hyponym(np2, 'entity.n.01') or is_hyponym(np2, 'abstraction.n.06')):
         result = True
-    elif is_hyponym(np2, 'group.n.01') and !is_hyponym(np2, 'state.n.04') and \
-        !is_hyponym(np2, 'event.n.01') and !is_hyponym(np2, 'act.n.02'):
+    elif is_hyponym(np2, 'group.n.01') and not is_hyponym(np2, 'state.n.04') and \
+        not is_hyponym(np2, 'event.n.01') and not is_hyponym(np2, 'act.n.02'):
         result = True
-    elif is_hyponym(np1, 'entity.n.01') and !is_hyponym(np2, 'state.n.04') and \
-        !is_hyponym(np2, 'event.n.01') and !is_hyponym(np2, 'phenomenon.n.01'):
+    elif is_hyponym(np1, 'entity.n.01') and not is_hyponym(np2, 'state.n.04') and \
+        not is_hyponym(np2, 'event.n.01') and not is_hyponym(np2, 'phenomenon.n.01'):
         result = True
 
     return result
