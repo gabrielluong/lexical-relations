@@ -185,17 +185,19 @@ def is_case4(hyponym, hypernym):
 def print_case(case, print_sentence=True):
     for i in range(1, 4):
         confidence = get_confidence(i)
-        print "Case 1 - ", confidence
-        print "=" * 50
 
         if confidence in case:
             data = case[confidence]
+            print "Case", i, "-", confidence, "(", len(data), ")"
+            print "=" * 50
             for d in data:
                 if print_sentence:
                     print d['sentence']
                 print "HYPONYM(%s, %s)\t\tCount: %d" % \
                     (d['hyponym'], d['hypernym'], d['count'])
-        print "\n" * 2
+        else:
+            print "Case", i, "-", confidence, "(0)"
+    print "\n" * 2
 
 
 if __name__ == "__main__":
