@@ -59,22 +59,22 @@ def find_hypernym_relations(sents):
             # of the tagged sentence
             tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
             for pattern in patterns:
-                matches = pattern.search(tagged_sent)
+                matches = pattern.match(tagged_sent)
                 if matches:
-                    print matches
-                hypernym = get_np(matches.group('hypernym'))
-                hyponyms = extract_matches(matches.group('hyponym'))
+                    hypernym = get_np(matches.group('hypernym'))
+                    hyponyms = extract_matches(matches.group('hyponym'))
+                    print hypernym, hyponyms
 
-                for hyponym in hyponyms:
-                    hyponym = get_np(hyponym)
-                    hyponym_pair = (hyponym, hypernym)
-                    pairs.setdefault(hyponym_pair, {
-                        'count': 0,
-                        'sentence': []
-                    })
-                    pairs[hyponym_pair]['count'] += 1
-                    if not tagged in pairs[hyponym_pair]['sentence']:
-                        pairs[hyponym_pair]['sentence'].append(tagged_sent)
+                    for hyponym in hyponyms:
+                        hyponym = get_np(hyponym)
+                        hyponym_pair = (hyponym, hypernym)
+                        pairs.setdefault(hyponym_pair, {
+                            'count': 0,
+                            'sentence': []
+                        })
+                        pairs[hyponym_pair]['count'] += 1
+                        if not tagged in pairs[hyponym_pair]['sentence']:
+                            pairs[hyponym_pair]['sentence'].append(tagged_sent)
         except:
             continue
 
