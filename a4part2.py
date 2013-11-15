@@ -46,11 +46,16 @@ def get_word(tagged_component):
     return "_".join(re.findall('(\S+)/\w+', tagged_component)).lower()
 
 
+casual_verbs = get_causal_verbs()
+def is_causal_verb(tagged_component):
+    verbs = re.findall('(\S+)/\w+', tagged_component)
+    return True
+
+
 def find_casual_relations(sents):
     # Dictionary that keeps track of the tuple (hyponym, hypernym) pairs and
     # their occurrence count and tagged sentence
     result = []
-    casual_verbs = get_causal_verbs()
 
     for s in sents:
         try:
@@ -58,14 +63,13 @@ def find_casual_relations(sents):
             # of the tagged sentence
             tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
             matches = pattern.search(tagged_sent)
-            if matches:
+            if matches and is_causal_verb(matches.group('verb')):
                 np1 = get_word(matches.group('NP1'))
                 np2 = get_word(matches.group('NP2'))
                 verb = get_word(matches.group('verb'))
                 preposition = get_word(matches.group('preposition'))
 
                 if is_causal(np1, np2, verb, preposition):
-                    print "Appended"
                     result.append({
                         'NP1': np1,
                         'NP2': np2,
@@ -144,7 +148,7 @@ def is_hyponym(word, root):
     if (word, root) in related:
         return True
 
-    word_synsets = wn.synsets(hyponym)
+    word_synsets = wn.synsets(word)
     root = wn.synset(root)
     result = False
 
