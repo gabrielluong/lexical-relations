@@ -83,10 +83,10 @@ def find_hypernym_relations(sents):
 # Dictionary for each case that contains the confidence level as a key,
 # and a dictionary containing the hyponym and hypernym pair, and tagged
 # sentence as the value.
-case1 = {}
-case2 = {}
-case3 = {}
-case4 = {}
+case1 = {"Low Confidence": [], "Medium Confidence": [], "High Confidence": []}
+case2 = {"Low Confidence": [], "Medium Confidence": [], "High Confidence": []}
+case3 = {"Low Confidence": [], "Medium Confidence": [], "High Confidence": []}
+case4 = {"Low Confidence": [], "Medium Confidence": [], "High Confidence": []}
 
 
 # Evaluate the suggested pair for each of the cases and categorize them according
@@ -99,7 +99,6 @@ def evaluate_cases(hyp_pairs):
         sentence = data['sentence']
 
         if is_case1(hyponym, hypernym):
-            case1[get_confidence(count)].setdefault([])
             case1[get_confidence(count)].append({
                 'count': count,
                 'sentence': sentence,
@@ -107,7 +106,6 @@ def evaluate_cases(hyp_pairs):
                 'hypernym': hypernym
             })
         if is_case2(hyponym, hypernym):
-            case2[get_confidence(count)].setdefault([])
             case2[get_confidence(count)].append({
                 'count': count,
                 'sentence': sentence,
@@ -115,7 +113,6 @@ def evaluate_cases(hyp_pairs):
                 'hypernym': hypernym
             })
         if is_case3(hyponym, hypernym):
-            case3[get_confidence(count)].setdefault([])
             case3[get_confidence(count)].append({
                 'count': count,
                 'sentence': sentence,
@@ -123,7 +120,6 @@ def evaluate_cases(hyp_pairs):
                 'hypernym': hypernym
             })
         if is_case4(hyponym, hypernym):
-            case4[get_confidence(count)].setdefault([])
             case4[get_confidence(count)].append({
                 'count': count,
                 'sentence': sentence,
