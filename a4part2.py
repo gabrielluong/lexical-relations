@@ -21,7 +21,7 @@ BaselineNpChunkRule = ChunkRule(DefaultNpPattern,
 NpChunker = RegexpChunkParser([BaselineNpChunkRule],
                               chunk_node='NP',top_node='S')
 
-from P2patterns import pattern
+from GirjuPattern import pattern
 # Import Girju's patterns
 
 
@@ -185,7 +185,7 @@ def is_hyponym(word, root):
 # Print the data in the list of casual relations
 def print_result(casual_relations, print_sentence=False):
     for relation in casual_relations:
-        print '%s-%s-%s-%s' % (relation['NP1'], relation['verb'], \
+        print '%20s - %10s - %5s - %20s' % (relation['NP1'], relation['verb'], \
             relation['preposition'], relation['NP2'])
 
 

@@ -21,7 +21,7 @@ BaselineNpChunkRule = ChunkRule(DefaultNpPattern,
 NpChunker = RegexpChunkParser([BaselineNpChunkRule],
                               chunk_node='NP',top_node='S')
 
-from P1patterns import patterns
+from HeartPattern import patterns
 # Import Hearst's patterns
 
 
@@ -200,8 +200,8 @@ def print_case(case_num, case, print_sentence=False):
 
 
 if __name__ == "__main__":
-    hyp_pair_dict = find_hypernym_relations(nyt_big.tagged_sents())
-    # hyp_pair_dict = find_hypernym_relations(nyt_mini.tagged_sents())
+    # hyp_pair_dict = find_hypernym_relations(nyt_big.tagged_sents())
+    hyp_pair_dict = find_hypernym_relations(nyt_mini.tagged_sents())
     evaluate_cases(hyp_pair_dict)
 
     print_case(1, case1)
