@@ -185,7 +185,7 @@ def is_hyponym(word, root):
 # Print the data in the list of casual relations
 def print_result(casual_relations, print_sentence=False):
     for relation in casual_relations:
-        print '%20s - %10s - %5s - %20s' % (relation['NP1'], relation['verb'], \
+        print '%26s - %12s - %5s - %24s' % (relation['NP1'], relation['verb'], \
             relation['preposition'], relation['NP2'])
 
 
