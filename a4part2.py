@@ -190,6 +190,6 @@ def print_result(casual_relations, print_sentence=False):
 
 
 if __name__ == "__main__":
-    casual_relations = find_casual_relations(nyt_big.tagged_sents())
-    # casual_relations = find_casual_relations(nyt_mini.tagged_sents())
+    # casual_relations = find_casual_relations(nyt_big.tagged_sents())
+    casual_relations = find_casual_relations(nyt_mini.tagged_sents())
     print_result(casual_relations)
