@@ -197,7 +197,7 @@ def print_case(case, print_sentence=True):
                     (d['hyponym'], d['hypernym'], d['count'])
         else:
             print "Case", i, "-", confidence, "(0)"
-    print "\n" * 2
+        print "\n" * 2
 
 
 if __name__ == "__main__":
