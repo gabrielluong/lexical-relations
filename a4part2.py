@@ -54,6 +54,9 @@ def get_word(tagged_component):
 
 # List of regular expression of the given causal verbs
 re_casual_verbs = get_causal_verbs()
+
+
+# Return True if the tagged verb is in the list of causal verb
 def is_causal_verb(tagged_verb):
     # Get the verb from the tagged verb
     verb = re.findall('(\S+)/\w+', tagged_verb)[0]
@@ -187,6 +190,6 @@ def print_result(casual_relations, print_sentence=False):
 
 
 if __name__ == "__main__":
-    # casual_relations = find_casual_relations(nyt_big.tagged_sents())
-    casual_relations = find_casual_relations(nyt_mini.tagged_sents())
+    casual_relations = find_casual_relations(nyt_big.tagged_sents())
+    # casual_relations = find_casual_relations(nyt_mini.tagged_sents())
     print_result(casual_relations)
