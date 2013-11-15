@@ -17,10 +17,11 @@ re_to_with_from_in = '(P<preposition>to/\w+|with/\w+|from/\w+|in/\w+)?\s*'
 
 
 ### Regular expression of Girju's patterns
+# \(NP[^)]*\)\s*\w+/V\w*\s*(to/\w+|with/\w+|from/\w+|in/\w+)?\s*\(NP[^)]*\)
 re_girju = '(?P<NP1>' + re_np + ')\s*' + re_verb + re_to_with_from_in + \
     '(?P<NP2>' + re_np + ')'
 pattern = re.compile(re_girju)
 
 
 if __name__ == "__main__":
-    pass
+    print re_girju

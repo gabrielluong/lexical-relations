@@ -39,6 +39,7 @@ def get_causal_verbs():
 
     return lines
 
+
 # Return the word from the tagged component
 # Example: (NP Mr/NP Everest/NP)"" => "Mr_Everest"
 def get_word(tagged_component):
@@ -58,11 +59,12 @@ def find_casual_relations(sents):
             tagged_sent = str(NpChunker.parse(s)).replace('\n', '')
             matches = pattern.search(tagged_sent)
             if matches:
+                print matches
                 np1 = get_word(matches.group('NP1'))
                 np2 = get_word(matches.group('NP2'))
                 verb = get_word(matches.group('verb'))
                 preposition = get_word(matches.group('preposition'))
-
+                print np1, np2, verb, preposition
                 if verb in causal_verbs and \
                     is_causal(np1, np2, verb, preposition):
                     result.append({
