@@ -25,17 +25,23 @@ from P2patterns import pattern
 # Import Girju's patterns
 
 
-# Return a list of the causal verbs
+# Return a list of the regular expression for the given causal verbs
 def get_causal_verbs():
     lines = [line.strip() for line in open('Causal-verbs.txt')]
 
     for i in range(len(lines)):
+        new_re = ""
         words = lines[i].split(" ")
-        # Check if the last word for the line matches an optional preposition.
-        # If so, remove it from the newly joined word.
-        if re.match('\(\w+\)', words[-1], flags=re.IGNORECASE):
-            words.pop(-1)
-        lines[i] = " ".join(words)
+
+        for word in words:
+            # Check if the last word for the line matches an optional preposition.
+            # If so, remove it from the newly joined word.
+            optional_match = re.match('\(\w+\)', word, flags=re.IGNORECASE)
+            if optional_match:
+                new_re = "(" + optional_match.group() + ")?\s*"
+            else:
+                new_re += word + "[ds]?\s*"
+        lines[i] = new_re
 
     return lines
 
@@ -46,18 +52,14 @@ def get_word(tagged_component):
     return "_".join(re.findall('(\S+)/\w+', tagged_component)).lower()
 
 
-# List of given causal verbs
+# List of regular expression of the given causal verbs
 casual_verbs = get_causal_verbs()
 def is_causal_verb(tagged_verb):
-    # Get the verb from the tagged verb and lose the letter to account for
-    # tenses
-    if len(re.findall('(\S+)/\w+', tagged_verb)) > 1:
-        print "WARNING"
-        sys.exit()
-    verb = re.findall('(\S+)/\w+', tagged_verb)[0][:-1]
+    # Get the verb from the tagged verb
+    verb = re.findall('(\S+)/\w+', tagged_verb)[0]
 
-    for v in casual_verbs:
-        if re.match(verb, v, re.IGNORECASE):
+    for re_verb in casual_verbs:
+        if re.match(re_verb, verb, re.IGNORECASE):
             return True
 
     return False
