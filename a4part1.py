@@ -182,7 +182,7 @@ def is_case3(hyponym, hypernym):
 
 # Return whether or not one or both of the words is missing from WordNet.
 def is_case4(hyponym, hypernym):
-    return not n.synsets(hyponym) or not wn.synsets(hypernym)
+    return not wn.synsets(hyponym) or not wn.synsets(hypernym)
 
 
 # Print the data in the case dictionaries.
