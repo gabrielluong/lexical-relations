@@ -1,4 +1,5 @@
-                     NP1 -         Verb - Preposition -                      NP2
+                     NP1 -         Verb - Preposition -                NP2
+        =====================================================================
                   others -   associated -  with -        the_beef_industry
                any_fraud -      related -    to -   the_parmalat_companies
    felony_murder_charges -      related -    to -           the_commission

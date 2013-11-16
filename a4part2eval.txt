@@ -1,0 +1,60 @@
+Part 2 Evaluation of Suggestions.
+
+Correctness(C, I, U) - NP1 -         Verb - Preposition -                NP2
+============================================================================
+C                   others -   associated -  with -        the_beef_industry
+C                any_fraud -      related -    to -   the_parmalat_companies
+C    felony_murder_charges -      related -    to -           the_commission
+C             four_artists -   associated -  with -              primitivism
+C              other_items -      created -    in -                  support
+C             other_doubts -       relate -    to -                venezuela
+C           economic_fears -      related -    to -                  the_war
+C                   people -   associated -  with -       the_tomasso_family
+C             a_right_turn -        leads -    to -       the_checkout_lanes
+C                 eviction -        leads -    to -            family_stress
+C            birth_defects -      related -    to -                 the_drug
+C               13_charges -      related -    to -     the_sarin_gas_attack
+C        an_advisory_group -   associated -  with -     the_national_academy
+C             other_issues -   associated -  with -                 cleaning
+C                  the_joy -   associated -  with -            the_victories
+C                conjuring -        leads -    to -            the_emergence
+C                 lawsuits -      related -    to -              the_attacks
+C                   claims -      related -    to -        the_rescue_effort
+C                    costs -      related -    to -               litigation
+C          the_cancer_risk -   associated -  with -                      pcb
+C                     bans -      related -    to -      the_mad_cow_problem
+C  serious_health_problems -   associated -  with -                 steroids
+C               some_costs -   associated -  with -                recycling
+C                this_tree -        leads -    to -              the_concept
+C                 projects -      related -    to -              faith-based
+Cintelligence_shortcomings -      related -    to -             the_iraq_war
+C            circumstances -      related -    to -                  the_war
+C            social_events -      related -    to -    art_basel_miami_beach
+C    a_mythological_figure -   associated -  with -         marital_fidelity
+C         visits_locations -   associated -  with -            the_beginning
+C               the_damage -       caused -    to -                importers
+I           the_discipline -       begins -    in -                 practice
+C               the_louvre -        leads -    to -                    clues
+C                 injuries -      related -    to -               childbirth
+C               the_lyrics -       relate -    to -              kierkegaard
+C        offensive_prowess -        leads -    to -   regular-season_success
+C            hollow_praise -        leads -    to -       poorer_performance
+I              any_records -      related -    to -                 a_review
+C                this_talk -        stems -  from -                     envy
+C        a_news_conference -      related -    to -                 the_case
+C                the_risks -   associated -  with -              the_auction
+C             ''each_thing -        leads -    to -            another_thing
+C               the_worker -   contribute -    to -               retirement
+C                    costs -      related -    to -            1,660_layoffs
+C   other_antigun_programs -      related -    to -       safe_neighborhoods
+C                     lore -   associated -  with -             fred_astaire
+C                  expense -      related -    to - stock-based_compensation
+C        security_problems -      related -    to -             a_trust_fund
+I               the_louvre -        leads -    to -                    clues
+C              two_dangers -   associated -  with -                      use
+C      the_e-mail_messages -         lead -    to -             a_phone_call
+C               everything -   associated -  with -                a_product
+C     executive_enrichment -   associated -  with -               the_grants
+I         street_criminals -   associated -  with -         jerard_steuerman
+I                 everyone -   associated -  with -           the_university
+C                 injuries -      started -    to -                     chip

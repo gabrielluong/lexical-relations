@@ -1,3 +1,53 @@
+Gabriel Luong
+996268275
+CSC485 Assignment 4
+
+
+Part 1.
+
+To find hypernym relations, regular expressions for each Hearst's pattern was
+used to match possible hypernym relations. Afterwards, the extract hypernym
+relations are evaluated for 4 different cases with WordNet to determine if the
+relation is valid. In building the regular expression for extracting the
+relations, regular expressions to extract key components in the Hearst's pattern
+were created and used to generate new regular expressions.
+
+These components included:
+{, NP_2, ..., {and|or} NP_j}, {,}, NP_0{, NP_1, ...,}, {and|or}
+
+When extracting hyponyms in patterns such as NP_0{, NP_2, ..., {and|or} NP_j},
+each hyponym NP is extracted out after capturing the entire pattern.
+
+For NP which might contain more than one N, the individual nouns are extracted,
+and joined by a _. Examples of this included box_office, political_leaders, etc.
+This was effective for getting the proper WordNet synset.
+
+On evaluating the correctness of the 4 different cases for the pair the program
+found, overall, the consensus was that most pairings were correct with a few
+exceptions. These examples can be examined in the Part 1 Evaluation. However,
+some examples included HYPONYM(japan, chefs), and HYPONYM(picture_frames, tokyo)
+for case 1. This seems to be a problem with the relations defined in WordNet.
+
+In case 2, the pairs found were a bit more ambiguous since it was possible that
+in some examples that the hyponym should be hypernym and vice versa. This was
+illustrated in the examples HYPONYM(theft, abuse) and HYPONYM(crappies, panfish).
+In both case 3 and 4, there were a significant number of correct pairs despite
+the fact that WordNet may not have a relation for the pair. However, there were
+a number of nonsense pairs that were reported for case 3 and 4 as a result of
+WordNet not knowing the relations between the words. These included false
+positive such as HYPONYM(the_professor, students), and HYPONYM(autism, childhood).
+
+One consideration that was not taken into account by the chunk parser was that
+the NP extracted is coming from a prepositional phrase in NP PP. The chunk
+parser should be modified to extracted the central NP in NP PP instead of the NP
+from PP, which may be defined as PP -> P NP. In additional, the NP extracted can
+be improved by removing quotations. There were also pairs containing numerical
+NPs such as HYPONYM(dinner, $150), which are incorrect. To mitigate this case,
+a new rule to Hearst's pattern could be used to discard numerical NPs or perhaps
+numerical quantities should not be classified as NPs by the POS tagger.
+
+
+
 Part 1 Evaluation of Suggestions.
 
 Legend
@@ -262,3 +312,8 @@ C                HYPONYM(emil_jannings, bright_lights)
 C                HYPONYM(the_euro, currencies)
 C                HYPONYM(plastic, inexpensive_materials)
 C                HYPONYM(sandwiches, elaborate_restaurant_fare)
+
+
+Part 2.
+
+To find causal relations, the prim

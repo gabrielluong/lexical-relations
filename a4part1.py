@@ -35,7 +35,7 @@ def get_confidence(num):
 
 
 # Return the NP from the tagged NP
-# Example: "(NP Mr./NP Everest/NP)" => "Mr Everest"
+# Example: "(NP Mr./NP Everest/NP)" => "Mr_Everest"
 def get_np(tagged_np):
     return "_".join(re.findall('(\S+)/\w+', tagged_np)).lower()
 
